@@ -10,6 +10,8 @@ import { hero } from "../fields/hero";
 
 import { MediaBlock } from "../blocks/Media";
 import { Content } from "../blocks/Content";
+import { CallToAction } from "../blocks/CallToAction";
+import { FeaturedPost } from "../blocks/FeaturedPost";
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -52,7 +54,7 @@ export const Pages: CollectionConfig = {
               name: "layout",
               type: "blocks",
               required: true,
-              blocks: [MediaBlock, Content],
+              blocks: [MediaBlock, Content, CallToAction, FeaturedPost],
             },
           ],
         },

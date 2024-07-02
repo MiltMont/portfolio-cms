@@ -5,6 +5,7 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import { buildConfig } from "payload/config";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
@@ -19,7 +20,7 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
-  editor: slateEditor({}),
+  editor: lexicalEditor({}),
   collections: [Pages, Posts, Categories, Media, Users],
   globals: [MainMenu, Footer],
   typescript: {

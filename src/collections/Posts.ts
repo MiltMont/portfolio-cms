@@ -7,6 +7,10 @@ import { Content } from "../blocks/Content";
 import { MediaBlock } from "../blocks/Media";
 
 import { slugField } from "../fields/slug";
+import { CallToAction } from "../blocks/CallToAction";
+import { FeaturedPost } from "../blocks/FeaturedPost";
+import { Callout } from "../blocks/Callout";
+import { Equation } from "../blocks/Equation";
 
 export const Posts: CollectionConfig = {
   slug: "posts",
@@ -44,7 +48,14 @@ export const Posts: CollectionConfig = {
     {
       name: "content",
       type: "blocks",
-      blocks: [MediaBlock, Content],
+      blocks: [
+        MediaBlock,
+        Content,
+        CallToAction,
+        FeaturedPost,
+        Callout,
+        Equation,
+      ],
       required: true,
     },
     {
