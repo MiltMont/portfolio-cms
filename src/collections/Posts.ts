@@ -46,6 +46,11 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
+      name: "category",
+      type: "relationship",
+      relationTo: "categories",
+    },
+    {
       name: "content",
       type: "blocks",
       blocks: [
