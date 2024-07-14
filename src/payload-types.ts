@@ -291,6 +291,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  category: string | Category;
   content: (
     | {
         mediaBlockFields: {
@@ -529,7 +530,7 @@ export interface Post {
  */
 export interface Category {
   id: string;
-  title: string;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }

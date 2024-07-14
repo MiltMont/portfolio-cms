@@ -3,11 +3,11 @@ import { CollectionConfig } from "payload/types";
 export const Categories: CollectionConfig = {
   slug: "categories",
   admin: {
-    useAsTitle: "title",
+    useAsTitle: "name",
   },
   fields: [
     {
-      name: "title",
+      name: "name",
       type: "text",
       required: true,
     },
