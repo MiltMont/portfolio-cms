@@ -1,6 +1,5 @@
 import path from "path";
 
-import { payloadCloud } from "@payloadcms/plugin-cloud";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { slateEditor } from "@payloadcms/richtext-slate";
@@ -14,6 +13,8 @@ import { Pages } from "./collections/Pages";
 import { Posts } from "./collections/Posts";
 import { Categories } from "./collections/Categories";
 import { MainMenu } from "./globals/MainMenu";
+import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
+import { adapter } from "./adapter";
 
 export default buildConfig({
   admin: {
@@ -29,7 +30,15 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
-  plugins: [payloadCloud()],
+  plugins: [
+    cloudStorage({
+      collections: {
+        media: {
+          adapter: adapter,
+        },
+      },
+    }),
+  ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
