@@ -9,7 +9,8 @@ export const Equation: Block = {
       fields: [
         {
           name: "richText",
-          type: "richText",
+          type: "text",
+          required: true,
         },
       ],
     }),

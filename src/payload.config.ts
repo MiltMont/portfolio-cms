@@ -2,7 +2,7 @@ import path from "path";
 
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
-import { slateEditor } from "@payloadcms/richtext-slate";
+import { BlocksFeature } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload/config";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
@@ -15,13 +15,21 @@ import { Categories } from "./collections/Categories";
 import { MainMenu } from "./globals/MainMenu";
 import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
 import { adapter } from "./adapter";
+import { Equation } from "./blocks/Equation";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
   },
-  editor: lexicalEditor({}),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      BlocksFeature({
+        blocks: [Equation],
+      }),
+    ],
+  }),
   collections: [Pages, Posts, Categories, Media, Users],
   globals: [MainMenu, Footer],
   typescript: {
